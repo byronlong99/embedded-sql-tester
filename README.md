@@ -49,7 +49,7 @@ public static void AssemblyInit(TestContext context)
 public class Employee
 {
 	[AutoIncrement]
-	public int EmployeeId { get; set; }public int EmployeeId { get; set; }
+	public int EmployeeId { get; set; }
 	public string FirstName { get; set; }
 	public string LastName { get; set; }	
 }
@@ -67,7 +67,7 @@ var ormliteConnectionFactory = new OrmLiteConnectionFactory(":memory:", SqliteDi
 ormliteConnectionFactory.DropAndCreateTable<Employee>();
 ```
 
-* Create and insert an Employee
+* Create and insert an Employee.
 
 ```csharp
 var employee = new Employee();
