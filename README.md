@@ -30,7 +30,7 @@ using (var connection = await ormliteConnectionFactory.OpenDbConnectionAsync())
 
 First, we just need to create the Ormlite Entities and create tables in sqlite with them.
 
-* First install the nuget package **DotNetSqliteUnitestingTools**
+* First install the nuget package **DotNetSqliteUnitestingTools**.
 * Add the following code to your AssemblyInitialize.  This example uses **MSTest**.
 
 ```csharp
@@ -76,4 +76,18 @@ employee.LastName = "Flintstone";
 ormliteConnectionFactory.Save(employee);
 ```
 
-* We can now convert
+#### Converting the query
+
+* We can now invoke the string extension method to convert from SQL Server dialect to Sqlite dialect and we will get our employee!
+
+```csharp
+using (var connection = await ormliteConnectionFactory.OpenDbConnectionAsync())
+{
+	var query = "SELECT FirstName
+			, LastName
+			FROM Personnel.Employee
+			WHERE EmployeeId = @EmployeeId";
+
+			return await connection.QueryAsync<Employee>(query.ConvertToOrmliteSQLiteDialect(), new {EmployeeId = employeeId});
+}						
+```
