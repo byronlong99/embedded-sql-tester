@@ -15,7 +15,14 @@ VPN, or even the internet!  This has allowed me to essentially allowed me to tak
 Consider the following example of embedded SQL code.
 
 ```csharp
-var query = "SELECT FirstName
+using (var connection = await _storeOpsRealtimeDatabaseConnectionFactory.OpenDbConnectionAsync())
+{
+	var query = "SELECT FirstName
 			, LastName
-			FROM Employee.Employee"
+			FROM Employee.Employee";
+
 			
+}			
+			
+```
+
