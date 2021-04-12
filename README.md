@@ -32,5 +32,9 @@ First we just need to create the Ormlite Entities and create tables in sqlite wi
 1.  Add the following code to your AssemblyInitialize.  This example uses **MSTest**.
 
 ```csharp
-
+[AssemblyInitialize]
+public static void AssemblyInit(TestContext context)
+{
+	SQLServerToOrmliteSQLiteDialectConverter.ConvertToOrmliteSQLiteDialect = true;
+}
 ```
