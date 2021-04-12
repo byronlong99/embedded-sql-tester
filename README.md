@@ -67,7 +67,7 @@ var ormliteConnectionFactory = new OrmLiteConnectionFactory(":memory:", SqliteDi
 ormliteConnectionFactory.DropAndCreateTable<Employee>();
 ```
 
-* Create and insert an Employee
+* Create and insert an Employee.
 
 ```csharp
 var employee = new Employee();
