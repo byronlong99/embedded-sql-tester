@@ -28,8 +28,8 @@ using (var connection = await ormliteConnectionFactory.OpenDbConnectionAsync())
 
 First we just need to create the Ormlite Entities and create tables in sqlite with them.
 
-*.  First install the nuget package **DotNetSqliteUnitestingTools**
-*.  Add the following code to your AssemblyInitialize.  This example uses **MSTest**.
+* First install the nuget package **DotNetSqliteUnitestingTools**
+* Add the following code to your AssemblyInitialize.  This example uses **MSTest**.
 
 ```csharp
 [AssemblyInitialize]
