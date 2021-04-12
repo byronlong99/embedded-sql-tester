@@ -12,17 +12,18 @@ VPN, or even the internet!  This has allowed me to essentially allowed me to tak
 
 ####  Unit Testing Embedded SQL for better Coverage and Confidence
 
-Consider the following example of embedded SQL code.
+Consider the following example of embedded SQL code that needs to be unit tested:
 
 ```csharp
-using (var connection = await _storeOpsRealtimeDatabaseConnectionFactory.OpenDbConnectionAsync())
+using (var connection = await ormliteConnectionFactory.OpenDbConnectionAsync())
 {
 	var query = "SELECT FirstName
 			, LastName
-			FROM Employee.Employee";
+			FROM Employee.Employee
+			WHERE EmployeeId = @EmployeeId";
 
-			
-}			
-			
+			return connection.QueryAsync<Employee>(query, new {EmployeeId = employeeId});
+}						
 ```
 
+First we just need to create the Ormlite Entities and create tables in sqlite with them.
