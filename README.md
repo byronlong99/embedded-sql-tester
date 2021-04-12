@@ -19,7 +19,7 @@ using (var connection = await ormliteConnectionFactory.OpenDbConnectionAsync())
 {
 	var query = "SELECT FirstName
 			, LastName
-			FROM Employee.Employee
+			FROM Personnel.Employee
 			WHERE EmployeeId = @EmployeeId";
 
 			return await connection.QueryAsync<Employee>(query, new {EmployeeId = employeeId});
@@ -37,4 +37,24 @@ public static void AssemblyInit(TestContext context)
 {
 	SQLServerToOrmliteSQLiteDialectConverter.ConvertToOrmliteSQLiteDialect = true;
 }
+```
+
+1.  Create an ormlite poco for the employee table.
+
+```csharp
+[Schema("Personnel")]
+[Alias("Employee")]
+public class Employee
+{
+	public string FirstName { get; set; }
+	public string LastName { get; set; }
+	public int EmployeeId { get; set; }
+}
+```
+
+1.  Then create an OrmliteConnectionFactory instance.  You will 
+
+
+```csharp
+var ormliteConnectionFactory = new OrmLiteConnectionFactory(":memory:", SqliteDialect.Provider));
 ```
