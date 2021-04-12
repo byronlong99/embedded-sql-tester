@@ -10,7 +10,7 @@ became difficult to control the query's performance.  My response was to find a 
 any compromises on my unit testing.  With this library I am able to develop and test the majority of my code without any dependency on infrastructure,
 VPN, or even the internet!  This has allowed me to essentially allowed me to take my productivity into my own hands.
 
-####  Unit Testing Embedded SQL for better Coverage and Confidence
+###  Unit Testing Embedded SQL for better Coverage and Confidence
 
 Consider the following example of embedded SQL code that needs to be unit tested:
 
@@ -26,7 +26,9 @@ using (var connection = await ormliteConnectionFactory.OpenDbConnectionAsync())
 }						
 ```
 
-First we just need to create the Ormlite Entities and create tables in sqlite with them.
+#### Setup
+
+First, we just need to create the Ormlite Entities and create tables in sqlite with them.
 
 * First install the nuget package **DotNetSqliteUnitestingTools**
 * Add the following code to your AssemblyInitialize.  This example uses **MSTest**.
@@ -39,23 +41,39 @@ public static void AssemblyInit(TestContext context)
 }
 ```
 
-*.  Create an Ormlite POCO for the employee table.
+* Create an Ormlite POCO for the employee table.
 
 ```csharp
 [Schema("Personnel")]
 [Alias("Employee")]
 public class Employee
 {
+	[AutoIncrement]
+	public int EmployeeId { get; set; }public int EmployeeId { get; set; }
 	public string FirstName { get; set; }
-	public string LastName { get; set; }
-	public int EmployeeId { get; set; }
+	public string LastName { get; set; }	
 }
 ```
 
-1.  Then create an OrmliteConnectionFactory instance with **:memory:** as the connection string.
+* Create an OrmliteConnectionFactory instance with **:memory:** as the connection string.
 
 ```csharp
 var ormliteConnectionFactory = new OrmLiteConnectionFactory(":memory:", SqliteDialect.Provider));
 ```
 
-!.  Now create the table in the 
+* Use the POCO class to create a table in the Sqlite in memory database.
+
+```csharp
+ormliteConnectionFactory.DropAndCreateTable<Employee>();
+```
+
+* Create and insert an Employee
+
+```csharp
+var employee = new Employee();
+employee.FirstName = "Fred";
+employee.LastName = "Flintstone";
+ormliteConnectionFactory.Save(employee);
+```
+
+* We can now convert
