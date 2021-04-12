@@ -22,8 +22,15 @@ using (var connection = await ormliteConnectionFactory.OpenDbConnectionAsync())
 			FROM Employee.Employee
 			WHERE EmployeeId = @EmployeeId";
 
-			return connection.QueryAsync<Employee>(query, new {EmployeeId = employeeId});
+			return await connection.QueryAsync<Employee>(query, new {EmployeeId = employeeId});
 }						
 ```
 
 First we just need to create the Ormlite Entities and create tables in sqlite with them.
+
+1.  First install the nuget package **DotNetSqliteUnitestingTools**
+1.  Add the following code to your AssemblyInitialize.  This example uses **MSTest**.
+
+```csharp
+
+```
