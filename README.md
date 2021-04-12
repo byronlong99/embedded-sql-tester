@@ -78,7 +78,7 @@ ormliteConnectionFactory.Save(employee);
 
 #### Converting the query
 
-* We can now invoke the string extension method to convert from SQL Server dialect to Sqlite dialect and we will get our employee record!
+We can now invoke the string extension method to convert from SQL Server dialect to Sqlite dialect and we will get our employee record!
 
 ```csharp
 using (var connection = await ormliteConnectionFactory.OpenDbConnectionAsync())
