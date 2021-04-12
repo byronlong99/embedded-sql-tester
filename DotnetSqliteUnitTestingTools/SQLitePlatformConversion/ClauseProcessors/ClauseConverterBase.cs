@@ -7,26 +7,26 @@ namespace DotnetSqliteUnittestingTools.SQLitePlatformConversion.ClauseProcessors
 {
     internal abstract class ClauseProcessor
     {
-        protected readonly TSQLClause Clause;
-        protected StringBuilder StringBuilder;
+        private readonly TSQLClause _clause;
+        private StringBuilder _stringBuilder;
         protected List<TSQLToken> Tokens;
 
         protected ClauseProcessor(TSQLClause clauseParameter)
         {
-            Clause = clauseParameter;
+            _clause = clauseParameter;
         }
 
         public string Convert()
         {
-            StringBuilder = new StringBuilder();
+            _stringBuilder = new StringBuilder();
 
-            if (Clause != null)
+            if (_clause != null)
             {
-                Tokens = Clause.Tokens;
+                Tokens = _clause.Tokens;
                 ConvertHelper();
             }
 
-            return StringBuilder.ToString();
+            return _stringBuilder.ToString();
         }
 
         private void ConvertHelper()
@@ -36,13 +36,13 @@ namespace DotnetSqliteUnittestingTools.SQLitePlatformConversion.ClauseProcessors
             for (int i = 0; i < Tokens.Count; i++)
             {
                 if (Tokens[i].BeginPosition - lastEndPosition > 1)
-                    StringBuilder.Append(" ");
+                    _stringBuilder.Append(" ");
 
                 var result = ProcessToken(i);
 
                 i = result.NewPosition;
                 
-                StringBuilder.Append(result.Text);
+                _stringBuilder.Append(result.Text);
 
                 lastEndPosition = Tokens[i].EndPosition;
             }
