@@ -4,7 +4,7 @@
 
 After working in the enterprise for several years I began to write unit tests.  Eventually, I found myself writing 
 the tests before writing the code itself **(TDD)**.  One limitation I found was that I was not able to write tests for my
-SQL queries, which in some cases, made up a significant portion of my codebase.  I tried using an **ORM**, specifically, [OrmLite](https://ormlite.com/),
+SQL queries.  Which in some cases, made up a significant portion of my codebase.  I tried using an **ORM**, specifically, [OrmLite](https://ormlite.com/),
 but that resulted in having to express complex queries in the ORM itself.  This became quite clumsy as the queries scaled in complexity and it also
 became difficult to control the performance of my queries.
 
