@@ -8,8 +8,8 @@ SQL queries.  Which in some cases, made up a significant portion of my codebase.
 but that resulted in having to express complex queries in the ORM itself.  This became quite clumsy as the queries scaled in complexity and it also
 became difficult to control the performance of my queries.
 
-My response was to find a way to make no compromises on how I express my SQL without making
-any compromises on my unit testing.  With this library I am able to develop and test the majority of my code without any dependency on infrastructure,
+My response was to find a way to make no *compromises* on how I express my SQL without making
+any *compromises* on my unit testing.  With this library I am able to develop and test the majority of my code without any dependency on infrastructure,
 VPN, or even the internet!  This has allowed me to essentially allowed me to take my productivity into my own hands.
 
 ###  Unit Testing Embedded SQL for better Coverage and Confidence
