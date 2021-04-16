@@ -1,4 +1,4 @@
-namespace DotnetSqliteUnittestingTools.SQLitePlatformConversion.ClauseProcessors
+namespace EmbeddedSQLTester.SQLitePlatformConversion.ClauseProcessors
 {
     internal class TokenResult
     {

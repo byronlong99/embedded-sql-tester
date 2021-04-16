@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using DotnetSqliteUnittestingTools.SQLitePlatformConversion.ClauseProcessors;
+using EmbeddedSQLTester.SQLitePlatformConversion.ClauseProcessors;
 using TSQL;
 using TSQL.Statements;
 
-namespace DotnetSqliteUnittestingTools.SQLitePlatformConversion
+namespace EmbeddedSQLTester.SQLitePlatformConversion
 {
     public class SQLServerToOrmliteSQLiteDialectConverter
     {

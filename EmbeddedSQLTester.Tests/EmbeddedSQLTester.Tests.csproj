@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DotnetSqliteUnittestingTools\DotnetSqliteUnittestingTools.csproj" />
+      <ProjectReference Include="..\EmbeddedSQLTester\EmbeddedSQLTester.csproj" />
     </ItemGroup>
 
 </Project>
