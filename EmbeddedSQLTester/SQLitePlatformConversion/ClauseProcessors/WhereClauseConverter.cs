@@ -1,7 +1,7 @@
 using System.Text;
 using TSQL.Clauses;
 
-namespace DotnetSqliteUnittestingTools.SQLitePlatformConversion.ClauseProcessors
+namespace EmbeddedSQLTester.SQLitePlatformConversion.ClauseProcessors
 {
     internal class WhereClauseConverter : ClauseProcessor
     {

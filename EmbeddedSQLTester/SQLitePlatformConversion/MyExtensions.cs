@@ -1,4 +1,4 @@
-﻿namespace DotnetSqliteUnittestingTools.SQLitePlatformConversion
+﻿namespace EmbeddedSQLTester.SQLitePlatformConversion
 {
     public static class MyExtensions
     {

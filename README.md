@@ -1,4 +1,4 @@
-### SQL Unit Testing Made Easy
+### Embedded SQL Unit Testing Made Easy
 
 #### Backstory
 

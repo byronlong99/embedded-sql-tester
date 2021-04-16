@@ -3,7 +3,7 @@ using System.Text;
 using TSQL.Clauses;
 using TSQL.Tokens;
 
-namespace DotnetSqliteUnittestingTools.SQLitePlatformConversion.ClauseProcessors
+namespace EmbeddedSQLTester.SQLitePlatformConversion.ClauseProcessors
 {
     internal abstract class ClauseProcessor
     {

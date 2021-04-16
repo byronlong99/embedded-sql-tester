@@ -1,6 +1,6 @@
 using TSQL.Clauses;
 
-namespace DotnetSqliteUnittestingTools.SQLitePlatformConversion.ClauseProcessors
+namespace EmbeddedSQLTester.SQLitePlatformConversion.ClauseProcessors
 {
     internal class FromClauseConverter : ClauseProcessor
     {
