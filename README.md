@@ -1,5 +1,9 @@
 ### Embedded SQL Unit Testing Made Easy
 
+Available on Nuget, [EmbeddedSQLTester](https://www.nuget.org/packages/EmbeddedSQLTester/).
+
+    Install-Package EmbeddedSQLTester
+
 #### Backstory
 
 After working in the enterprise for several years I began to write unit tests.  Eventually, I found myself writing 
