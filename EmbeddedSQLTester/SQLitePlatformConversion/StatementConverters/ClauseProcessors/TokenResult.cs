@@ -1,4 +1,4 @@
-namespace EmbeddedSQLTester.SQLitePlatformConversion.ClauseProcessors
+namespace EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.ClauseProcessors
 {
     internal class TokenResult
     {

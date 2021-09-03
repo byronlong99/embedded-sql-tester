@@ -1,7 +1,7 @@
 using System.Text;
 using TSQL.Clauses;
 
-namespace EmbeddedSQLTester.SQLitePlatformConversion.ClauseProcessors
+namespace EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.ClauseProcessors
 {
     internal class OrderByClauseConverter : ClauseProcessor
     {

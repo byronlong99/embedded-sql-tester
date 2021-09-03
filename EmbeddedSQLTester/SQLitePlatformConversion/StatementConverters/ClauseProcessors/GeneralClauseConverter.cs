@@ -1,11 +1,11 @@
 using System.Text;
 using TSQL.Clauses;
 
-namespace EmbeddedSQLTester.SQLitePlatformConversion.ClauseProcessors
+namespace EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.ClauseProcessors
 {
-    internal class WhereClauseConverter : ClauseProcessor
+    internal class GeneralClauseConverter : ClauseProcessor
     {
-        public WhereClauseConverter(TSQLClause clause) : base(clause)
+        public GeneralClauseConverter(TSQLClause clause) : base(clause)
         {
         }
 
@@ -13,12 +13,12 @@ namespace EmbeddedSQLTester.SQLitePlatformConversion.ClauseProcessors
         {
             var token = Tokens[position].Text;
 
-            token = token.Replace("+", "||");
-
             var result = new TokenResult {Text = token, NewPosition = position};
 
             if (token.ToLower() == "dateadd")
                 result = HandleDateAdd(position);
+            else if (token.ToLower() == "varchar")
+                result = new TokenResult {Text = "text", NewPosition = position};
 
             return result;
         }
