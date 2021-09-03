@@ -2,7 +2,7 @@ using TSQL.Clauses;
 
 namespace EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.ClauseProcessors
 {
-    internal class FromClauseConverter : ClauseProcessor
+    internal class FromClauseConverter : ClauseConverterBase
     {
         private bool _insideOnClause;
 

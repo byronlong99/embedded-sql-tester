@@ -1,34 +1,35 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
-using TSQL.Clauses;
+using EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.ClauseProcessors;
+using TSQL.Expressions;
 using TSQL.Tokens;
 
-namespace EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.ClauseProcessors
+namespace EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.ExpressionProcessors
 {
-    internal abstract class ClauseConverterBase : ConverterBase
+    internal abstract class ExpressionConverterBase : ConverterBase
     {
-        private readonly TSQLClause _clause;
+        private readonly TSQLExpression _expression;
         private StringBuilder _stringBuilder;
         protected List<TSQLToken> Tokens;
-
-        protected ClauseConverterBase(TSQLClause clauseParameter)
+        
+        protected ExpressionConverterBase(TSQLExpression expression)
         {
-            _clause = clauseParameter;
+            _expression = expression;
         }
-
+        
         public override string Convert()
         {
             _stringBuilder = new StringBuilder();
 
-            if (_clause != null)
+            if (_expression != null)
             {
-                Tokens = _clause.Tokens;
+                Tokens = _expression.Tokens;
                 ConvertHelper();
             }
 
             return _stringBuilder.ToString();
         }
-
+        
         private void ConvertHelper()
         {
             var lastEndPosition = 0;
@@ -47,7 +48,7 @@ namespace EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.ClauseP
                 lastEndPosition = Tokens[i].EndPosition;
             }
         }
-
+        
         protected abstract TokenResult ProcessToken(int position);
     }
 }

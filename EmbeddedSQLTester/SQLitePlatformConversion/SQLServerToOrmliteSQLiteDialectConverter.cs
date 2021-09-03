@@ -10,7 +10,7 @@ namespace EmbeddedSQLTester.SQLitePlatformConversion
     public class SQLServerToOrmliteSQLiteDialectConverter
     {
         public static bool ConvertToOrmliteSQLiteDialect { get; set; }
-        private List<ClauseProcessor> _clauseConverters;
+        private List<ConverterBase> _clauseConverters;
         
         public string ConvertToOrmliteSQLiteSQL(string sqlInput)
         {            
@@ -28,6 +28,12 @@ namespace EmbeddedSQLTester.SQLitePlatformConversion
             {
                 var updateStatement = (TSQLUpdateStatement)statement;
                 var converter = new UpdateStatementConverter();
+                _clauseConverters = converter.GetClauseProcessorList(updateStatement);
+            }
+            else if (statement.GetType() == typeof(TSQLInsertStatement))
+            {
+                var updateStatement = (TSQLInsertStatement)statement;
+                var converter = new InsertStatementConverter();
                 _clauseConverters = converter.GetClauseProcessorList(updateStatement);
             }
 

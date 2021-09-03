@@ -1,10 +1,11 @@
-﻿using TSQL.Clauses;
+using System.Text;
+using TSQL.Clauses;
 
 namespace EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.ClauseProcessors
 {
-    internal class UpdateClauseConverter : ClauseConverterBase
+    internal class InsertClauseConverter : ClauseConverterBase
     {
-        public UpdateClauseConverter(TSQLClause clauseParameter) : base(clauseParameter)
+        public InsertClauseConverter(TSQLClause clause) : base(clause)
         {
         }
 
@@ -12,11 +13,12 @@ namespace EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.ClauseP
         {
             var token = Tokens[position].Text;
 
-            token = token.Replace('.', '_');
-            
             token = token.Replace("[", string.Empty).Replace("]", string.Empty);
+            token = token.Replace('.', '_');
 
-            return new TokenResult { Text = token, NewPosition = position };
+            var result = new TokenResult {Text = token, NewPosition = position};
+
+            return result;
         }
     }
 }

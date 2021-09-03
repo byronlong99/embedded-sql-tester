@@ -3,7 +3,7 @@ using TSQL.Clauses;
 
 namespace EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.ClauseProcessors
 {
-    internal class OrderByClauseConverter : ClauseProcessor
+    internal class OrderByClauseConverter : ClauseConverterBase
     {
         public OrderByClauseConverter(TSQLClause clauseParameter) : base(clauseParameter)
         {

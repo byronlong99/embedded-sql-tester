@@ -6,9 +6,9 @@ namespace EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters
 {
     internal class SelectStatementConverter
     {
-        public List<ClauseProcessor> GetClauseProcessorList(TSQLSelectStatement statement)
+        public List<ConverterBase> GetClauseProcessorList(TSQLSelectStatement statement)
         {
-            return new List<ClauseProcessor>
+            return new List<ConverterBase>
             {
                 new GeneralClauseConverter(statement.Select),
                 new FromClauseConverter(statement.From),
