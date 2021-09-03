@@ -1,7 +1,7 @@
 using EmbeddedSQLTester.SQLitePlatformConversion;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EmbeddedSQLTester.Tests
+namespace EmbeddedSQLTester.Tests.StatementConverters
 {
     [TestClass]
     public class SQLitePlatformConverterTests

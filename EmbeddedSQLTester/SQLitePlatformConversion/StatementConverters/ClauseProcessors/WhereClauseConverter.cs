@@ -1,9 +1,9 @@
 using System.Text;
 using TSQL.Clauses;
 
-namespace EmbeddedSQLTester.SQLitePlatformConversion.ClauseProcessors
+namespace EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.ClauseProcessors
 {
-    internal class WhereClauseConverter : ClauseProcessor
+    internal class WhereClauseConverter : ClauseConverterBase
     {
         public WhereClauseConverter(TSQLClause clause) : base(clause)
         {

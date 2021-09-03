@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using EmbeddedSQLTester.SQLitePlatformConversion.ClauseProcessors;
+using EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters;
+using EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.ClauseProcessors;
 using TSQL;
 using TSQL.Statements;
 
@@ -9,22 +10,32 @@ namespace EmbeddedSQLTester.SQLitePlatformConversion
     public class SQLServerToOrmliteSQLiteDialectConverter
     {
         public static bool ConvertToOrmliteSQLiteDialect { get; set; }
-
-        private List<ClauseProcessor> _clauseConverters;
+        private List<ConverterBase> _clauseConverters;
         
         public string ConvertToOrmliteSQLiteSQL(string sqlInput)
         {            
             var statements = TSQLStatementReader.ParseStatements(sqlInput);
-            var statement = (TSQLSelectStatement) statements[0];
 
-            _clauseConverters = new List<ClauseProcessor>
+            var statement = statements[0];
+
+            if (statement.GetType() == typeof(TSQLSelectStatement))
             {
-                new GeneralClauseConverter(statement.Select),
-                new FromClauseConverter(statement.From),
-                new WhereClauseConverter(statement.Where),
-                new GeneralClauseConverter(statement.GroupBy),
-                new OrderByClauseConverter(statement.OrderBy)
-            };
+                var selectStatement = (TSQLSelectStatement)statement;
+                var converter = new SelectStatementConverter();
+                _clauseConverters = converter.GetClauseProcessorList(selectStatement);
+            }
+            else if (statement.GetType() == typeof(TSQLUpdateStatement))
+            {
+                var updateStatement = (TSQLUpdateStatement)statement;
+                var converter = new UpdateStatementConverter();
+                _clauseConverters = converter.GetClauseProcessorList(updateStatement);
+            }
+            else if (statement.GetType() == typeof(TSQLInsertStatement))
+            {
+                var updateStatement = (TSQLInsertStatement)statement;
+                var converter = new InsertStatementConverter();
+                _clauseConverters = converter.GetClauseProcessorList(updateStatement);
+            }
 
             var sb = new StringBuilder();
 

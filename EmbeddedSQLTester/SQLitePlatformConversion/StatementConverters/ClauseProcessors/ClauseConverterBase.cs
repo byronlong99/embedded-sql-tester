@@ -3,20 +3,20 @@ using System.Text;
 using TSQL.Clauses;
 using TSQL.Tokens;
 
-namespace EmbeddedSQLTester.SQLitePlatformConversion.ClauseProcessors
+namespace EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.ClauseProcessors
 {
-    internal abstract class ClauseProcessor
+    internal abstract class ClauseConverterBase : ConverterBase
     {
         private readonly TSQLClause _clause;
         private StringBuilder _stringBuilder;
         protected List<TSQLToken> Tokens;
 
-        protected ClauseProcessor(TSQLClause clauseParameter)
+        protected ClauseConverterBase(TSQLClause clauseParameter)
         {
             _clause = clauseParameter;
         }
 
-        public string Convert()
+        public override string Convert()
         {
             _stringBuilder = new StringBuilder();
 
@@ -49,7 +49,5 @@ namespace EmbeddedSQLTester.SQLitePlatformConversion.ClauseProcessors
         }
 
         protected abstract TokenResult ProcessToken(int position);
-
-
     }
 }
