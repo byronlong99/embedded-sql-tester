@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters;
-using EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.ClauseProcessors;
 using TSQL;
 using TSQL.Statements;
 
@@ -32,9 +31,15 @@ namespace EmbeddedSQLTester.SQLitePlatformConversion
             }
             else if (statement.GetType() == typeof(TSQLInsertStatement))
             {
-                var updateStatement = (TSQLInsertStatement)statement;
+                var insertStatement = (TSQLInsertStatement)statement;
                 var converter = new InsertStatementConverter();
-                _clauseConverters = converter.GetClauseProcessorList(updateStatement);
+                _clauseConverters = converter.GetClauseProcessorList(insertStatement);
+            }
+            else if (statement.GetType() == typeof(TSQLDeleteStatement))
+            {
+                var deleteStatement = (TSQLDeleteStatement)statement;
+                var converter = new DeleteStatementConverter();
+                _clauseConverters = converter.GetClauseProcessorList(deleteStatement);
             }
 
             var sb = new StringBuilder();

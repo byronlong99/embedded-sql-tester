@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>net5.0;netcoreapp3.1;netstandard2.1</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup>
-  <VersionPrefix>1.0.11</VersionPrefix>
+  <VersionPrefix>1.0.12</VersionPrefix>
   <VersionSuffix></VersionSuffix>
 </PropertyGroup>
   <ItemGroup>
