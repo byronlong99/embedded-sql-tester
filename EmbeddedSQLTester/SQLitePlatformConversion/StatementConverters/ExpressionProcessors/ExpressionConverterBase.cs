@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.ClauseProcessors;
+using TSQL.Elements;
 using TSQL.Expressions;
 using TSQL.Tokens;
 
@@ -8,11 +9,11 @@ namespace EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.Express
 {
     internal abstract class ExpressionConverterBase : ConverterBase
     {
-        private readonly TSQLExpression _expression;
+        private readonly TSQLValues _expression;
         private StringBuilder _stringBuilder;
         protected List<TSQLToken> Tokens;
         
-        protected ExpressionConverterBase(TSQLExpression expression)
+        protected ExpressionConverterBase(TSQLValues expression)
         {
             _expression = expression;
         }

@@ -12,7 +12,7 @@ namespace EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters
             return new List<ConverterBase>
             {
                 new InsertClauseConverter(statement.Insert),
-                new ValuesExpressionConverter(statement.Values),
+                new ValuesExpressionConverter(statement.Values)
             };
         }
     }
