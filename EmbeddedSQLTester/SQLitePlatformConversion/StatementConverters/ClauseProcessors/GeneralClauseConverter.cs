@@ -1,3 +1,5 @@
+using System;
+using System.Net.Mime;
 using System.Text;
 using TSQL.Clauses;
 
@@ -19,6 +21,8 @@ namespace EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.ClauseP
                 result = HandleDateAdd(position);
             else if (token.ToLower() == "varchar")
                 result = new TokenResult {Text = "text", NewPosition = position};
+            else if (token.ToLower() == "top")
+                result = new TokenResult {Text = string.Empty, NewPosition = position + 1};
 
             return result;
         }

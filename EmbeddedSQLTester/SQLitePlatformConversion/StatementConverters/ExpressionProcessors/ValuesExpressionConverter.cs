@@ -1,11 +1,12 @@
 ﻿using EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.ClauseProcessors;
+using TSQL.Elements;
 using TSQL.Expressions;
 
 namespace EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.ExpressionProcessors
 {
     internal class ValuesExpressionConverter : ExpressionConverterBase
     {
-        public ValuesExpressionConverter(TSQLExpression clause) : base(clause)
+        public ValuesExpressionConverter(TSQLValues clause) : base(clause)
         {
         }
 
