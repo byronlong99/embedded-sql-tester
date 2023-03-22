@@ -14,7 +14,8 @@ namespace EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters
                 new FromClauseConverter(statement.From),
                 new WhereClauseConverter(statement.Where),
                 new GeneralClauseConverter(statement.GroupBy),
-                new OrderByClauseConverter(statement.OrderBy)
+                new OrderByClauseConverter(statement.OrderBy),
+                new LimitStatementConverter(statement.Select)
             };
         }
     }

@@ -150,7 +150,7 @@ namespace EmbeddedSQLTester.Tests.StatementConverters
             var resultingQuery = sqlPlatformConverter.ConvertToOrmliteSQLiteSQL(query);
 
             // Assert 
-            var expectedQuery = @"SELECT * FROM SchemaName_TableName T LEFT JOIN SchemaName_JoinTableName1 JTN  ON T.Id = JTN.Id LEFT JOIN SchemaName_JoinTableName2 JTN2  ON JTN1.Id2 = JTN1.Id2";
+            var expectedQuery = @"SELECT * FROM SchemaName_TableName T LEFT JOIN SchemaName_JoinTableName1 JTN ON T.Id = JTN.Id LEFT JOIN SchemaName_JoinTableName2 JTN2 ON JTN1.Id2 = JTN1.Id2";
 
             Assert.AreEqual(expectedQuery, resultingQuery);
         }
@@ -235,5 +235,21 @@ namespace EmbeddedSQLTester.Tests.StatementConverters
 
             Assert.AreEqual(expectedQuery, resultingQuery);
         }      
+        
+        [TestMethod]
+        public void TOP_LimitIsUsed()
+        {
+            // Arrange
+            var sqlPlatformConverter = new SQLServerToOrmliteSQLiteDialectConverter();
+            
+            var query = @"SELECT TOP 10 * FROM SchemaName.TableName";
+            
+            // Act
+            var resultingQuery = sqlPlatformConverter.ConvertToOrmliteSQLiteSQL(query);
+            
+            var expectedQuery = @"SELECT * FROM SchemaName_TableName LIMIT 10";                        
+
+            Assert.AreEqual(expectedQuery, resultingQuery);
+        }     
     }
 }

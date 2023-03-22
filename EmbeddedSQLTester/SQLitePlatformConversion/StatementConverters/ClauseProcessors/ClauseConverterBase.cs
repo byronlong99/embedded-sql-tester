@@ -35,12 +35,12 @@ namespace EmbeddedSQLTester.SQLitePlatformConversion.StatementConverters.ClauseP
 
             for (int i = 0; i < Tokens.Count; i++)
             {
-                if (Tokens[i].BeginPosition - lastEndPosition > 1)
-                    _stringBuilder.Append(" ");
-
                 var result = ProcessToken(i);
 
                 i = result.NewPosition;
+                
+                if (Tokens[i].BeginPosition - lastEndPosition > 1 && !string.IsNullOrEmpty(result.Text))
+                    _stringBuilder.Append(" ");
                 
                 _stringBuilder.Append(result.Text);
 
