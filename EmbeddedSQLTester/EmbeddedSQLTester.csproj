@@ -5,7 +5,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   <PropertyGroup>
-  <VersionPrefix>1.0.18</VersionPrefix>
+  <VersionPrefix>1.0.21</VersionPrefix>
   <VersionSuffix></VersionSuffix>
 </PropertyGroup>
   <ItemGroup>
